@@ -13,9 +13,8 @@
 
 | Login | Menu Principal |
 |-------|----------------|
-| ![Login](imagens/login.png) | ![Menu](imagens/menu.png) |
+|  ![login](https://github.com/user-attachments/assets/c541372e-8c86-4cdb-a5fb-cd53cbcaafbb) | ![menu](https://github.com/user-attachments/assets/d08cd6e9-9af4-402a-962b-58fe678487fa) | 
 
-> 💡 Coloque os prints reais na pasta `imagens/` do projeto.
 
 ---
 
