@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <title>Gestão de Reserva</title>
+     <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f2f5;
+            margin: 0;
+            padding: 0;
+        }
+        nav {
+            background: #005A9E;
+            padding: 10px 40px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-right: 20px;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+        }
+        nav a:hover {
+            background-color: #003B6F;
+        }
+        main {
+            padding: 40px;
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        form label {
+            display: block;
+            margin: 12px 0 6px;
+            font-weight: 600;
+        }
+        input[type=text], input[type=password], input[type=email] {
+            width: 100%;
+            padding: 8px 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type=submit], button {
+            background-color: #0078D7;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 15px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        input[type=submit]:hover, button:hover {
+            background-color: #005A9E;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #0078D7;
+            color: white;
+        }
+        .hidden {
+            display: none;
+        }
+        
+        /* Estilo para o formulário de cadastro */
+
+h2 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+form {
+    max-width: 400px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 25px 30px;
+    border-radius: 8px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+form input[type="number"],
+form input[type="datetime-local"] {
+    width: 100%;
+    padding: 10px 12px;
+    margin: 10px 0 20px;
+    border: 1.8px solid #bdc3c7;
+    border-radius: 6px;
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+form input[type="number"]:focus,
+form input[type="datetime-local"]:focus {
+    border-color: #2980b9;
+    outline: none;
+}
+
+form button {
+    width: 100%;
+    background-color: #2980b9;
+    color: white;
+    font-weight: 700;
+    padding: 12px 0;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #1f6391;
+}
+
+    </style>
+    <script>
+        // função simples para trocar entre as "páginas" na mesma index.html (opcional)
+        function mostrarSecao(secaoId) {
+            const secoes = document.querySelectorAll('section');
+            secoes.forEach(sec => sec.classList.add('hidden'));
+            document.getElementById(secaoId).classList.remove('hidden');
+        }
+        window.onload = () => {
+            mostrarSecao('home'); // mostrar home por padrão
+        }
+    </script>
+</head>
+<body>
+    
+    <nav>
+        <a onclick="mostrarSecao('home')">Início</a>
+        <a onclick="mostrarSecao('cadastro')">Nova Reserva</a>
+        <a href="listarReservas.jsp">Lista de Reserva</a> <!-- como a lista precisa carregar dados, aponta direto para JSP -->
+    </nav>
+
+    <main>
+        <section id="home">
+            <h2>Bem-vindo ao sistema!</h2>
+            <p>Use o menu para navegar entre as funcionalidades.</p>
+        </section>
+
+        <section id="cadastro" class="hidden">
+            <h2>Cadastro de Reserva</h2>
+            <form method="post" action="cadastrarReserva.jsp">
+                ID Usuário: <input type="number" name="id_usuario" min="1" required /><br/>
+                ID Sala: <input type="number" name="id_sala" min="1" required /><br/>
+                Data Início: <input type="datetime-local" name="data_inicio" required /><br/>
+                Data Fim: <input type="datetime-local" name="data_fim" required /><br/>
+                Status Reserva: <select name="statusReserva" required>
+                            <option value=""> </option>
+                            <option value="0">Pendente</option>
+                            <option value="1">Concluido</option>
+                            <option value="2">Cancelado</option>
+                            <option value="3">Finalizado</option>
+                           </select><br/><br/>
+              
+                <button type="submit">Salvar</button>
+            </form>
+
+    </main>
+</body>
+</html>
