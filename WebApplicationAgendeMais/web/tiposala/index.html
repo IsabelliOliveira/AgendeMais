@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <title>Agende+ - Gestão de Tipos de Sala</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f2f5;
+            margin: 0; padding: 0;
+        }
+        nav {
+            background: #005A9E;
+            padding: 10px 40px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-right: 20px;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+        }
+        nav a:hover {
+            background-color: #003B6F;
+        }
+        main {
+            padding: 40px;
+            max-width: 700px;
+            margin: auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        form label {
+            display: block;
+            margin: 12px 0 6px;
+            font-weight: 600;
+        }
+        input[type=text], input[type=number], select {
+            width: 100%;
+            padding: 8px 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type=submit], button {
+            background-color: #0078D7;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 15px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        input[type=submit]:hover, button:hover {
+            background-color: #005A9E;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+    <script>
+        function mostrarSecao(secaoId) {
+            const secoes = document.querySelectorAll('section');
+            secoes.forEach(sec => sec.classList.add('hidden'));
+            document.getElementById(secaoId).classList.remove('hidden');
+        }
+        window.onload = () => {
+            mostrarSecao('home');
+        }
+    </script>
+</head>
+<body>
+<nav>
+    <a onclick="mostrarSecao('home')">Início</a>
+    <a onclick="mostrarSecao('cadastroTipoSala')">Cadastrar Tipo de Sala</a>
+    <a href="listarTipoSala.jsp">Listar Tipos de Sala</a>
+</nav>
+
+<main>
+    <section id="home">
+        <h2>Bem-vindo ao Agende+!</h2>
+        <p>Use o menu para navegar entre as funcionalidades do sistema.</p>
+    </section>
+
+    <section id="cadastroTipoSala" class="hidden">
+
+    <h2>Cadastrar Tipo de Sala</h2>
+    <form method="post" action="cadastrarTipoSala.jsp">
+        Descrição: <input type="text" name="descricao" required><br>
+
+            <input type="submit" value="Cadastrar Tipo de Sala">
+        </form>
+    </section>
+</main>
+</body>
+</html>
